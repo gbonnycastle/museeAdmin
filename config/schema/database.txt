@@ -1,0 +1,114 @@
+Parties	------------------
+	org			boolean			1 = organization; 0 = individual
+	
+Persons	------------------
+FK	party_id	integer
+	name		string(40)		calculated from last,first
+	title		string(12)		
+	first		string(40)		
+	middle		string(40)		
+	last		string(40)		
+	name_zh		string(10)		
+	title_zh	string(10)		
+	photo
+	company
+	job_title
+	website
+	language
+	gender
+	birthday
+	
+Organs	------------------
+FK	party_id	integer
+	name		string(40)
+	name_zh		
+	website
+
+Addresses	--------------
+FK	party_id	integer
+	desc		string(12)		home/work/office/postal
+	street		string(255)
+	city		string(40)
+	region		string(12)      ISO 3166-2
+	country		string(2)		ISO 3166-1
+	postcode	string(12)
+
+Telnums		---------------
+FK	party_id	integer
+	tel			boolean			true: telnum is a telephone number
+	desc		string(12)		home/work/office/mobile
+	num			string(40)
+	
+Users		---------------
+FK	party_id	integer
+	name
+	email
+	password
+	
+Members		---------------
+FK	user_id		integer
+	since		datetime
+	level		string			founder/sponsor/honorary/lifetime/regular/family/adult/junior
+	status		string(12)		active/pending-new/pending-renew/lapsed/suspended/archived/contact
+FK	referred_by	integer			member_id
+
+Posts	-------------------
+FK	author		integer
+	created		datetime
+	modified	datetime
+	title		string
+	content		text			Markdown editor
+
+Comments	---------------
+FK 	author		integer
+FK	post_id		integer
+	content		text
+	
+Tags	-------------------
+	
+Images	-------------------
+
+ImageTags	---------------
+
+PostTags	---------------
+
+PostImages	---------------
+
+MemberImages	-----------
+
+ProductImages	-----------
+
+Products	---------------
+
+Rooms	-------------------
+	name
+	description
+	
+Bookings	---------------
+	member_id
+	guest_count
+	begin_date
+	end_date
+
+ReservedRoom	-----------
+	booking_id
+	room_id
+	room_rate
+	
+Events
+
+
+	
+
+
+
+
+
+	
+	
+
+	
+
+
+	
+	
