@@ -8,7 +8,7 @@ angular.
     controller: ['$http', '$routeParams',
       function PersonDetailController($http, $routeParams) {
         var self = this;
-        $http.get('http://localhost/musee/persons/' +$routeParams.personId + '.json').then(function(response) {
+        $http.get('/musee/persons/' +$routeParams.personId + '.json').then(function(response) {
 			self.person = response.data.person;
 
         });

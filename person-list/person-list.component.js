@@ -9,7 +9,7 @@ angular.
         var self = this;
         self.orderProp = 'sortname';
 
-$http.get('http://localhost/musee/persons.json').then(function(response) {
+		$http.get('/musee/persons.json').then(function(response) {
 			self.persons = response.data.persons;
 		});
       }
