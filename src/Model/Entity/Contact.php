@@ -4,22 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Person Entity
+ * Contact Entity
  *
  * @property int $id
- * @property string $fullname
- * @property string $fullname_zh
- * @property string $sortname
- * @property string $photo
- * @property \Cake\I18n\Time $birthday
+ * @property string $name
+ * @property bool $org
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property int $contact_id
- *
- * @property \App\Model\Entity\Party $party
- * @property \App\Model\Entity\Group[] $groups
  */
-class Person extends Entity
+class Contact extends Entity
 {
 
     /**

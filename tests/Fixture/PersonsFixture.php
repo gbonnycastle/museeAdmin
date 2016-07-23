@@ -25,7 +25,7 @@ class PersonsFixture extends TestFixture
         'birthday' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'party_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'contact_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -48,10 +48,10 @@ class PersonsFixture extends TestFixture
             'fullname_zh' => 'Lorem ipsum dolor sit amet',
             'sortname' => 'Lorem ipsum dolor sit amet',
             'photo' => 'Lorem ipsum dolor sit amet',
-            'birthday' => '2016-07-20 23:04:30',
-            'created' => '2016-07-20 23:04:30',
-            'modified' => '2016-07-20 23:04:30',
-            'party_id' => 1
+            'birthday' => '2016-07-23 07:41:21',
+            'created' => '2016-07-23 07:41:21',
+            'modified' => '2016-07-23 07:41:21',
+            'contact_id' => 1
         ],
     ];
 }

@@ -7,21 +7,21 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Persons Model
+ * Locators Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Contacts
  *
- * @method \App\Model\Entity\Person get($primaryKey, $options = [])
- * @method \App\Model\Entity\Person newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Person[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Person|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Person patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Person[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Person findOrCreate($search, callable $callback = null)
+ * @method \App\Model\Entity\Locator get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Locator newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Locator[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Locator|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Locator patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Locator[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Locator findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class PersonsTable extends Table
+class LocatorsTable extends Table
 {
 
     /**
@@ -34,7 +34,7 @@ class PersonsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('persons');
+        $this->table('locators');
         $this->displayField('id');
         $this->primaryKey('id');
 
@@ -58,21 +58,16 @@ class PersonsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('fullname', 'create')
-            ->notEmpty('fullname');
+            ->integer('locator_type')
+            ->requirePresence('locator_type', 'create')
+            ->notEmpty('locator_type');
 
         $validator
-            ->allowEmpty('fullname_zh');
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
 
         $validator
-            ->allowEmpty('sortname');
-
-        $validator
-            ->allowEmpty('photo');
-
-        $validator
-            ->dateTime('birthday')
-            ->allowEmpty('birthday');
+            ->allowEmpty('info');
 
         return $validator;
     }

@@ -18,6 +18,9 @@ class PersonsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Contacts']
+        ];
         $persons = $this->paginate($this->Persons);
 
         $this->set(compact('persons'));
@@ -34,7 +37,7 @@ class PersonsController extends AppController
     public function view($id = null)
     {
         $person = $this->Persons->get($id, [
-            'contain' => []
+            'contain' => ['Contacts']
         ]);
 
         $this->set('person', $person);
@@ -59,7 +62,8 @@ class PersonsController extends AppController
                 $this->Flash->error(__('The person could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('person'));
+        $contacts = $this->Persons->Contacts->find('list', ['limit' => 200]);
+        $this->set(compact('person', 'contacts'));
         $this->set('_serialize', ['person']);
     }
 
@@ -85,7 +89,8 @@ class PersonsController extends AppController
                 $this->Flash->error(__('The person could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('person'));
+        $contacts = $this->Persons->Contacts->find('list', ['limit' => 200]);
+        $this->set(compact('person', 'contacts'));
         $this->set('_serialize', ['person']);
     }
 
