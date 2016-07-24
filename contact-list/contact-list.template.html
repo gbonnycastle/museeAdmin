@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div id="page-wrapper" class="container-fluid">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <!--Sidebar content-->
 
       <p>
@@ -30,7 +30,7 @@
 		<a ng-href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 		<a ng-href="#">Add new contact</a>
 	  </p>
-      <table ng-table="contacts" class="table">
+      <table ng-table="contacts" class="table table-striped">
 		<tr><th>Photo</th><th>Full Name</th></tr>
         <tr ng-repeat="contact in $ctrl.contacts | 
 						filter:$ctrl.query | 
