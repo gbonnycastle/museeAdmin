@@ -19,6 +19,6 @@ angular.
         when('/contact/:contactId', {
           template: '<contact-detail></contact-detail>'
         }). 
-        otherwise('/persons');
+        otherwise('/contacts');
     }
   ]);
