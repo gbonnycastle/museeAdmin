@@ -6,7 +6,10 @@
 	  </div>
 	</div>
 	<div class="col-md-7">
-	  <h1>{{$ctrl.contact.persons[0].fullname}} {{$ctrl.contact.persons[0].fullname_zh}}</h1>
+	  <h1>
+	    {{$ctrl.contact.persons[0].fullname}}
+		{{$ctrl.contact.persons[0].fullname_zh}}
+	  </h1>
 	  <p>{{$ctrl.contact.persons[0].birthday | date:'MMM d yyyy' }}</p>
 	  <h3>Contact Info</h3>
 	  <table ng-table="locators" class="table">
