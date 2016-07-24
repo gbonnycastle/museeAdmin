@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+        </select>
+      </p>
+
+	  <form name="orgSwitch">
+        Filter by:
+        <label class="radio"><input type="radio" ng-model="$ctrl.orgProp" value=0 />People</label>
+		<label class="radio"><input type="radio" ng-model="$ctrl.orgProp" value=1 />Organization</label>
+      </form>
+	  
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+	  <h2>Contacts</h2>
+      <table class="contacts">
+		<tr><th>Photo</th><th>Full Name</th></tr>
+        <tr ng-repeat="contact in $ctrl.contacts | 
+						filter:$ctrl.query | 
+						orderBy:$ctrl.orderProp"
+            class="contact-list-item">
+          <td ng-if="!contact.org">
+			<a href="#!/contact/{{contact.id}}" class="thumb">
+            <img ng-src="img/{{contact.persons[0].photo}}" alt="{{contact.persons[0].fullname}}" style="width:50px; height:50px; border-radius: 50%; padding: 5px;" />
+			</a>
+		  </td>
+		  <td ng-if="contact.org">
+			&nbsp;
+		  </td>
+		  <td ng-if="!contact.org"><a href="#!/contact/{{contact.id}}">
+			{{contact.persons[0].fullname}}</a><br />{{contact.persons[0].fullname_zh}}
+		  </td>
+		  <td ng-if="contact.org">
+			<a href="#!/contact/{{contact.id}}">{{contact.name}}</a>
+		  </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+	<div class="col-md-3">
+	  <div class="photo">
+	    <img ng-src="img/{{$ctrl.contact.persons[0].photo}}" class="contact" style = "height:300px; width:300px; border-radius: 50%;" />
+	  </div>
+	</div>
+	<div class="col-md-6">
+	  <h1>{{$ctrl.contact.persons[0].fullname}} {{$ctrl.contact.persons[0].fullname_zh}}</h1>
+	  <p>{{$ctrl.contact.persons[0].birthday | date:'MMM d yyyy' }}</p>
+	  <h3>Contact Info</h3>
+	  <table ng-table="locators" class="table">
+		<tr ng-repeat="locator in $ctrl.contact.locators | orderBy:'locator_type'">
+			<td ng-if="locator.locator_type==1"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></td> 
+			<td ng-if="locator.locator_type==2"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td> 
+			<td ng-if="locator.locator_type==3"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></td> 
+			<td ng-if="locator.locator_type==4"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></td> 
+			<td ng-if="locator.locator_type==5"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td> 
+			<td>{{locator.description}}</td> 
+			<td>{{locator.info}}</td>
+		</tr>
+	  </table>
+	  <h3>Groups</h3>
+	  <table ng-table="groups" class="table">
+		<tr ng-repeat="group in $ctrl.contact.groups | orderBy: 'name' ">
+			<td><span class="glyphicon glyphicon-record" aria-hidden="true"></span></td> 
+			<td>{{group.group_type}}</td> 
+			<td>{{group.name}}</td>
+		</tr>
+	  </table>
+    </div>
+  </div>
+</div>

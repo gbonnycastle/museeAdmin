@@ -45,7 +45,7 @@ Router::extensions(['json']);
 Router::scope('/', function (RouteBuilder $routes) {
     // Only controllers explicitly enabled for API use will be accessible through your API.
 	$routes->resources('Posts');
-	$routes->resources('Parties');
+	$routes->resources('Contacts');
 	$routes->resources('Persons');
     
 	/**

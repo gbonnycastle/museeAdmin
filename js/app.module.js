@@ -6,4 +6,6 @@ angular.module('museeAdmin', [
   'core',
   'personDetail',
   'personList',
+  'contactDetail',
+  'contactList',
 ]);
