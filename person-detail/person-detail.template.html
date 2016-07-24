@@ -1,13 +1,14 @@
 <div class="container-fluid">
   <div class="row">
-	<div class="col-md-3">
-	  <div class="photo">
-	    <img ng-src="img/{{$ctrl.person.photo}}" class="person" style = "height:300px; width:300px; border-radius: 50%;" />
-	  </div>
-	</div>
-	<div class="col-md-6">
-	  <h1>{{$ctrl.person.fullname}} {{$ctrl.person.fullname_zh}}</h1>
-	  <p>{{$ctrl.person.birthday | date:'MMM d yyyy' }}</p>
-    </div>
+     <div class="col-md-3">
+        <div class="photo">
+          <img ng-src="img/{{$ctrl.person.photo}}" class="person" style = "height:300px; width:300px; border-radius: 50%;" />
+        </div>
+     </div>
+     <div class="col-md-6">
+        <h1><a href="#/persons/{{$ctrl.person.id}}" editable-text="$ctrl.person.fullname" e-label="User Name">{{ $ctrl.person.fullname || 'empty' }}</a></h1>
+        <h1>{{$ctrl.person.fullname}} {{$ctrl.person.fullname_zh}}</h1>
+        <p>{{$ctrl.person.birthday | date:'MMM d yyyy' }}</p>
+     </div>
   </div>
 </div>
