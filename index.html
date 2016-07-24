@@ -31,10 +31,11 @@
     <script src="contact-detail/contact-detail.component.js"></script>
   </head>
   <body>
-
+	<div ng-include src="'partials/structure/header.html'"></div>
+	<div ng-include src="'partials/structure/navigation.html'"></div>
     <div class="view-container">
       <div ng-view class="view-frame"></div>
     </div>
-
+	<div ng-include src="'partials/structure/footer.html'"></div>
   </body>
 </html>

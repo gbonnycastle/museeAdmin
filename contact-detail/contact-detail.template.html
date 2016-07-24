@@ -17,7 +17,8 @@
 			<td ng-if="locator.locator_type==4"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></td> 
 			<td ng-if="locator.locator_type==5"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td> 
 			<td>{{locator.description}}</td> 
-			<td>{{locator.info}}</td>
+			<td ng-if="locator.locator_type==4"><a ng-href="{{locator.info}}">{{locator.info}}</a></td>
+			<td ng-if="locator.locator_type!=4">{{locator.info}}</td>
 		</tr>
 		<tr>
 			<td><a ng-href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
