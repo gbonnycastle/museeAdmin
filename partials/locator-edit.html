@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Edit Contact Method</h1>
+
+    <form novalidate="novalidate" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="inputDescription">Description:</label>
+            <div class="controls">
+                <input type="text" id="inputDescription" ng-model="locator.description"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputInfo">Info:</label>
+            <div class="controls">
+                <input type="text" id="inputInfo" ng-model="locator.info"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+              <!-- locator-edit.html: -->
+                <a ng-click="cancel()" class="btn btn-small">cancel</a>
+                <a ng-click="updateLocator()" class="btn btn-small btn-primary">update</a>
+
+              <!-- locator-create.html: 
+                <a ng-click="createNewLocator()" class="btn btn-small btn-primary">create new</a> -->
+            </div>
+        </div>
+    </form>
+</div>
