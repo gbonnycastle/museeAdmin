@@ -5,19 +5,10 @@ angular.
   module('contactDetail').
   component('contactDetail', {
     templateUrl: 'contact-detail/contact-detail.template.html',
-    controller: ['$http', '$routeParams', 
-      function ContactDetailController($http, $routeParams) {
+    controller: ['$routeParams', 'Contact',
+      function ContactDetailController($routeParams, Contact) {
         var self = this;
-        $http.get('http://localhost/musee/contacts/' +$routeParams.contactId + '.json').then(function(response) {
-			self.contact = response.data.contact;
-
-        });
-	  function TextSimpleCtrl($scope) {
-		$scope.contact = {
-			fullname: 'awesome user'
-		};
-	  };
-
-      }
+		self.contact = Contact.get({id: $routeParams.contactId});
+	  }
 	]
   });

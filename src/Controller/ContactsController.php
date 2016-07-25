@@ -11,6 +11,11 @@ use App\Controller\AppController;
 class ContactsController extends AppController
 {
 
+	public function initialize()
+	{
+		parent::initialize();
+		$this->loadComponent('RequestHandler');
+	}
     /**
      * Index method
      *
@@ -20,9 +25,10 @@ class ContactsController extends AppController
     {
         $contacts = $this->Contacts->find('all')
 			->contain(['Persons']);
-
-        $this->set(compact('contacts'));
-        $this->set('_serialize', ['contacts']);
+        $this->set([
+			'contacts' => $contacts,
+			'_serialize' => 'contacts'
+		]);
     }
 
     /**
@@ -38,8 +44,10 @@ class ContactsController extends AppController
             'contain' => ['Groups', 'Locators', 'Persons', 'Users']
         ]);
 
-        $this->set('contact', $contact);
-        $this->set('_serialize', ['contact']);
+        $this->set([
+			'contact' => $contact,
+			'_serialize' => array('contact')
+		]);
     }
 
     /**

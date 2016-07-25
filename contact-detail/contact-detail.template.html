@@ -2,7 +2,7 @@
   <div class="row">
 	<div class="col-md-3">
 	  <div class="photo">
-	    <img ng-src="img/{{$ctrl.contact.persons[0].photo}}" class="contact" style = "height:200px; width:200px; border-radius: 50%; margin-top:20px" />
+	    <img ng-src="img/{{$ctrl.contact.contact.persons[0].photo}}" class="contact" style = "height:200px; width:200px; border-radius: 50%; margin-top:20px" />
 	  </div>
 	</div>
 	<div class="col-md-7">
@@ -13,7 +13,7 @@
 	  <p>{{$ctrl.contact.persons[0].birthday | date:'MMM d yyyy' }}</p>
 	  <h3>Contact Info</h3>
 	  <table ng-table="locators" class="table">
-		<tr ng-repeat="locator in $ctrl.contact.locators | orderBy:'locator_type'">
+		<tr ng-repeat="locator in $ctrl.contact.contact.locators | orderBy:'locator_type'">
 			<td ng-if="locator.locator_type==1"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></td> 
 			<td ng-if="locator.locator_type==2"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td> 
 			<td ng-if="locator.locator_type==3"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></td> 
@@ -31,7 +31,7 @@
 	  </table>
 	  <h3>Groups</h3>
 	  <table ng-table="groups" class="table">
-		<tr ng-repeat="group in $ctrl.contact.groups | orderBy: 'name' ">
+		<tr ng-repeat="group in $ctrl.contact.contact.groups | orderBy: 'name' ">
 			<td><span class="glyphicon glyphicon-record" aria-hidden="true"></span></td> 
 			<td>{{group.group_type}}</td> 
 			<td>{{group.name}}</td>

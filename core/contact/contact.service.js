@@ -4,11 +4,10 @@ angular.
   module('core.contact').
   factory('Contact', ['$resource',
     function($resource) {
-      return $resource('localhost\musee\contacts\:id.json', {}, {
+      return $resource('contacts/:id.json', {id:'@id'}, {
         query: {
           method: 'GET',
-          params: {Id: 'id'},
-          isArray: true
+		  isArray: true
         }
       });
     }
