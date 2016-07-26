@@ -17,35 +17,29 @@ angular.
 		});
 		
 		self.setModel = function setModel(contact){
+			// extra copy - might be useful???
 			self.m = contact;
 		}
 		
 		self.setFormData = function setFormData(contact){
+			// copy returned data into form control variables
 			self.f = contact;
+			
+			// initialize state of locators (hide edit controls)
+			for( var i = 0; i < self.f.locators.length; i++) {
+				self.editLocators[i] = false;
+			}
 		} 
 		
-		self.toggle = function toggle(state){
-			state = !state;
+		self.showEdit= function showEdit(element){
+			element = true;
 		}
-
 		self.locDescOptions = [
 		  { 'id':1, 'name':'Main' }, 
 		  { 'id':2, 'name':'Office' },
 		  { 'id':3, 'name':'Home' }
 		];
 		
-//		self.display = element(b.css('div.display'));
-		
-/*		it('should check ng-show / ng-hide', function(){
-			expect(edit.isDisplayed()).toBeFalsy();
-			expect(display.isDisplayed()).toBeTruthy();
-			
-			element(by.model('checked')).click();
-			
-			expect(edit.isDisplayed()).toBeTruthy();
-			expect(display.isDisplayed()).toBeFalsy();
-			
-		}); */
 	  } // function ContactDetailController
 	] // controller
   }); // component
