@@ -52,59 +52,67 @@
 	  <div class="row">
 	    <div class="col-md-12">
 		    <h3>Contact Info</h3>
-			<table ng-table="locators" class="table">
-				<tr ng-repeat="loc in $ctrl.f.locators | orderBy:'locator_type'" 
+			<ul ng-repeat="loc_type in [1,2,3,4,5]" style="list-style:none">
+				<li ng-repeat="loc in $ctrl.f.locators"
+					ng-if="loc.locator_type==loc_type"
 					ng-mouseenter="show = true" 
 					ng-mouseleave="show = false"
-					style="height:3.2em">
-					<!-- locator type icons -->
-					<td ng-if="loc.locator_type==1" ><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></td> 
-					<td ng-if="loc.locator_type==2" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td> 
-					<td ng-if="loc.locator_type==3" ><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></td> 
-					<td ng-if="loc.locator_type==4" ><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></td> 
-					<td ng-if="loc.locator_type==5" ><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td> 
-					<!-- locator descriptions -->
-					<td ng-hide="show">{{loc.description}}</td>
-					<td ng-show="show">
+					style="height:2em;">
+					
+					<span class="{{$ctrl.locatorTypes[loc_type-1].icon}}" aria-hidden="true"></span>
+					
+					<span ng-hide="show" style="display:inline-block; width:8em; padding-left:15px;">{{loc.description}}</span>
+					<span ng-show="show" style="display:inline-block; width:8em; padding-left:15px;">
 						<select name="repeatSelect" 
 								ng-model="loc.description"
 								style="margin-top:-2px; margin-left:-2px">
-							<option ng-repeat="option in $ctrl.locDescOptions" value="{{option.id}}">{{option.name}}</option>
+							<option ng-repeat="option in $ctrl.locDescOptions" value="{{option.name}}">{{option.name}}</option>
 						</select>
-					</td>
-					<!-- locator info -->
-					<td ng-hide="show" ng-if="loc.locator_type==4" ><a ng-href="{{loc.info}}">{{loc.info}}</a></td>
-					<td ng-hide="show" ng-if="loc.locator_type!=4" >{{loc.info}}</td>
-					<td ng-show="show">
+					</span>
+					
+					<span ng-hide="show" style="display:inline-block; width:25em">{{loc.info}}</span>
+					<span ng-show="show" style="display:inline-block; width:25em">
 						<input id="loc-info-input" type="text" name="input" 
 								ng-model="loc.info" 
 								style="width:25em; margin-left:-2px; margin-top:-2px">
-					</td>
-				</tr>
-				<tr>
-					<td><a ng-href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
-					<td>&nbsp;</td>
-					<td><a ng-click="createNewLocator()">Add new contact method</a></td>
-				</tr>
-			</table>
-			<h3>Groups</h3>
-			<table ng-table="groups" class="table">
-				<tr ng-repeat="group in $ctrl.contact.contact.groups | orderBy: 'name' ">
-					<td id="grp-id" ng-show="false">{{group.id}}</td>
-					<td id="grp-icon"><span class="glyphicon glyphicon-record" aria-hidden="true"></span></td> 
-					<td id="grp-type">{{group.group_type}}</td> 
-					<td id="grp-name">{{group.name}}</td>
-				</tr>
-				<tr>
-					<td><a ng-href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
-					<td><a ng-href="#">Add to group</a></td>
-					<td>&nbsp;</td>
-				</tr>
-			</table>
+					</span>
+					<div ng-show="show" style="display:inline-block;">
+						<a ng-click="$ctrl.delLocator(???)">
+							<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+						</a>
+					</div>
+					
+				</li>
+				<li ng-mouseenter="show = true" ng-mouseleave="show = false">
+						<span ng-show="show" class="glyphicon glyphicon-plus" aria-hidden="true" style="color:blue"></span>
+						<span ng-hide="show" style="display:inline-block; width:35em; padding-left:15px;">&nbsp;</span>
+						<span ng-show="show"style="display:inline-block; width:35em; padding-left:15px;">
+							<a ng-click="$ctrl.addLocator(loc_type)" style="cursor:default">Add {{$ctrl.locatorTypes[loc_type-1].name}}</a>
+						</span>
+				</li>
+			</ul>
 			
-			<pre>$ctrl.f = {{$ctrl.f | json}}</pre>
+			<h3>Groups</h3>
+			<ul style="list-style:none;">
+				<li ng-repeat="group in $ctrl.contact.contact.groups | orderBy: 'name' ">
+					<span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+					{{group.group_type}}
+					{{group.name}}
+				</li>
+				<li ng-mouseenter="show = true" ng-mouseleave="show = false">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						<span ng-hide="show" style="display:inline-block; width:35em; padding-left:15px;">&nbsp;</span>
+						<span ng-show="show"style="display:inline-block; width:35em; padding-left:15px;">
+							<a ng-click="$ctrl.addGroup">Add group</a>
+						</span>
+				</li>
+			</ul>
+			<div style="height:20em">
+			
+			
 		</div>
 	  </div>
 	</div>
+	<pre>$ctrl.f = {{$ctrl.f | json}}</pre>
   </div>
 </div>
